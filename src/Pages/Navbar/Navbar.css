@@ -1,0 +1,18 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0rem 2rem 0rem;
+}
+.main {
+  width: 90%;
+  margin: auto;
+}
+
+.logo {
+  color: #fac604;
+  font-weight: 700;
+}
+
+span {
+  color: #e45414;
+}
