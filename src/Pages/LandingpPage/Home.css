@@ -384,3 +384,35 @@ input[type="date"] {
   padding: 5px;
 
 }
+
+.updatebtn{
+  background-color: #30ce6A;
+  color: white;
+}
+.readbtn{
+  background-color: #006Ae8;
+  color: white;
+}
+
+
+  table td{
+    padding: 5px !important;
+  }
+
+  
+element.style {
+}
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-accent-bg: #fefed4;
+    color: var(--bs-table-striped-color);
+}
+
+.table-bordered>:not(caption)>* {
+  border-width: 0px 0;
+}
+
+/* .table-bordered td, .table-bordered th {
+  border: 1px solid #a79790;
+} */
+
+

@@ -25,11 +25,12 @@ function Home() {
     const [searchArray, setSearchArray] = useState([]);
     const [inludes, setInludes] = useState([]);
     const [sortSelected, setSortSelected] = useState([]);
+    const [datasort, setdatasort] = useState([]);
     useEffect(() => {
         getdata();
     }, [])
 
-    console.log(inludes)
+
 
     const getdata = async () => {
         const data = await getCall("metadata");
@@ -43,6 +44,7 @@ function Home() {
 
     //console.log(resource.type)
     const observation = (e) => {
+
         setvalue(e)
         const SearchParam = e;
         const result = resource.find(({ type }) => type === SearchParam);
@@ -102,14 +104,33 @@ function Home() {
     }
     const onSearchClick = async (e) => {
         var allchecked = document.querySelectorAll("[name='search_include']:checked");
+
         var queryParams = searchArray.map(x => x.selection).join("&");
-        queryParams += "&_include=" + [...allchecked].map(x => x.value).join("&_include=");
+        queryParams += "&_include=" + [...datasort].map(x => x).join("&_include=");
+
         var result = await getCall(resourceSelected + "?" + (options ?? "") + "&" + (queryParams ?? "") + (sortSelected ? "&_sort=" + sortSelected : ""));
         if (result)
             setResultSet(result.entry);
     }
     const optionChanged = e => {
         setOptions(e);
+    }
+
+    {/* ********************Get DropDown Value*************************** */ }
+
+    const datasearch = (e) => {
+
+
+        setdatasort(e[0]?.value)
+        // setdatasort([...datasort, e[0]?.value]);
+        // console.log(datasort)
+        // setdatasort(datasort => [...datasort, e[0]?.value]);
+        // setdatasort(prevState => [...prevState, e[0]?.value]);
+        console.log(datasort)
+
+
+
+
     }
     return (
         // <div className='container'>
@@ -143,8 +164,9 @@ function Home() {
                             </svg>
                         </label> */}
                         <Select
-                            className="basic-single sortbtn"
+                            className="search_include sortbtn"
                             classNamePrefix="select"
+
 
                             name="color"
                             options={CONSTANTS.SORT.map((x, i) => { return { value: x, label: x } })}
@@ -190,18 +212,18 @@ function Home() {
                 {/* ********************DropDown*************************** */}
 
                 <article className='hintcontent mt-3'>
-                <Select
-            classNamePrefix="select"
-            placeholder={"Select Param"}
-            // defaultValue={props.defaultResource}
-            label="test"
-            isMulti
-            name="colors"
-
-            className="basic-multi-select"
-            // onChange={(e) => { props.onChange(e.value) }} 
-            options={inludes.map(x => { return { value: x, label: x } })}
-          />
+                    <Select
+                        classNamePrefix="select"
+                        placeholder={"Select Param"}
+                        // defaultValue={props.defaultResource}
+                        label="test"
+                        isMulti
+                        name="colors"
+                        onChange={datasearch}
+                        className="basic-multi-select"
+                        // onChange={(e) => { props.onChange(e.value) }} 
+                        options={inludes.map(x => { return { value: x, label: x } })}
+                    />
                     <br />
                 </article>
                 <div>
@@ -212,7 +234,7 @@ function Home() {
 
 
             <div className="col-12 col-lg-8">
-            <h2 className="mt-3 tablehide">Table Data:</h2>
+                <h2 className="mt-3 tablehide">Table Data:</h2>
                 <article>
                     {resultSet && resultSet.length > 0 &&
                         <article>
@@ -238,8 +260,8 @@ function Home() {
                                                 return (
                                                     <tr>
                                                         <td className='d-flex flex-row'>
-                                                            <button className='btn btn-primary btn-sm' onClick={() => onReadClick(id)}>Read</button>
-                                                            <button className='btn btn-primary btn-sm ml-2'>Update</button>
+                                                            <button className='btn readbtn btn-primary btn-sm' onClick={() => onReadClick(id)}>Read</button>
+                                                            <button className='btn btn-primary updatebtn btn-sm ml-2'>Update</button>
                                                         </td>
                                                         <td>
                                                             <a href={c.fullUrl + "/_history/1"}>{`${c.resource.resourceType}/${c.resource.id}/_history/1`}</a>

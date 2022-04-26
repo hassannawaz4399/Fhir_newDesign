@@ -141,7 +141,7 @@ const Crud = () => {
     return (
         <>
             <div className="row ">
-                <div className="col-6 datacolunm">
+                <div className="col-4 datacolunm">
                     {
                         resource && resource.length > 0 ? <SearchComponent hideOption={true} onChange={onResourceChange} resources={resource} defaultResource={{ value: resource[0].type, label: resource[0].type + " (" + resource[0].extension[0].valueDecimal + ")" }}></SearchComponent> : <Select placeholder="loading..." isDisabled={true} />
                     }
@@ -178,19 +178,19 @@ const Crud = () => {
                                     <i className="fa fa-calendar-o mr-2"></i>
                                     History
                                 </button>
-                                <div className="input-group ml-3" style={{ maxWidth: 300 }}>
+                                <div className="input-group" style={{ maxWidth: 300 }}>
                                     <div className="input-group-prepend">
                                         <span className="input-group-text">ID</span>
                                     </div>
                                     <input value={hId} onChange={e => setHid(e.target.value)} type="text" className="form-control m-0" placeholder="(Instance ID)" aria-label="Username" aria-describedby="basic-addon1" />
                                 </div>
-                                <div className="input-group ml-3" style={{ maxWidth: 400 }}>
+                                <div className="input-group" style={{ maxWidth: 400 }}>
                                     <div className="input-group-prepend">
                                         <span className="input-group-text">Version ID</span>
                                     </div>
                                     <input value={hvid} onChange={e => setHvid(e.target.value)} type="text" className="form-control m-0" placeholder="(opt)" aria-label="Username" aria-describedby="basic-addon1" />
                                 </div>
-                                <div className="input-group ml-3" style={{ maxWidth: 250 }}>
+                                <div className="input-group" style={{ maxWidth: 250 }}>
                                     <div className="input-group-prepend">
                                         <span className="input-group-text">Limit</span>
                                     </div>
@@ -224,13 +224,13 @@ const Crud = () => {
                                     <i className="fa fa-plus mr-2"></i>
                                     Create
                                 </button>
-                                <div className="input-group ml-3" style={{ maxWidth: 300 }}>
+                                <div className="input-group" style={{ maxWidth: 300 }}>
                                     <div className="input-group-prepend">
                                         <span className="input-group-text">ID</span>
                                     </div>
                                     <input value={createId} onChange={e => setCreateId(e.target.value)} type="text" className="form-control m-0" placeholder="" aria-label="Username" aria-describedby="basic-addon1" />
                                 </div>
-                                <div className="input-group ml-3" style={{ maxWidth: 400 }}>
+                                <div className="input-group" style={{ maxWidth: 400 }}>
                                     <div className="input-group-prepend">
                                         <span className="input-group-text">Version ID</span>
                                     </div>
@@ -247,13 +247,13 @@ const Crud = () => {
                                     <i className="fa fa-plus mr-2"></i>
                                     Update
                                 </button>
-                                <div className="input-group ml-3" style={{ maxWidth: 300 }}>
+                                <div className="input-group" style={{ maxWidth: 300 }}>
                                     <div className="input-group-prepend">
                                         <span className="input-group-text">ID*</span>
                                     </div>
                                     <input value={updateId} onChange={e => setUpdateId(e.target.value)} type="text" className="form-control m-0" placeholder="" aria-label="Username" aria-describedby="basic-addon1" />
                                 </div>
-                                <div className="input-group ml-3" style={{ maxWidth: 400 }}>
+                                <div className="input-group" style={{ maxWidth: 400 }}>
                                     <div className="input-group-prepend">
                                         <span className="input-group-text">Version ID</span>
                                     </div>
@@ -270,7 +270,7 @@ const Crud = () => {
                                     <i className="fa fa-thumbs-up mr-2"></i>
                                     Validate
                                 </button>
-                                <div className="input-group ml-3" style={{ maxWidth: 800 }}>
+                                <div className="input-group" style={{ maxWidth: 800 }}>
                                     <div className="input-group-prepend">
                                         <span className="input-group-text">Contents*</span>
                                     </div>
