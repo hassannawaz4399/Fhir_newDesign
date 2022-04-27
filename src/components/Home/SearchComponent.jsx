@@ -35,7 +35,7 @@ function SearchComponent(props) {
           <Select
             className="basic-single"
             classNamePrefix="select"
-            placeholder={"Resources"}
+            placeholder={"Select Resources"}
             // defaultValue={props.defaultResource}
             label="test"
             onChange={(e) => { props.onChange(e.value) }}
@@ -54,7 +54,7 @@ function SearchComponent(props) {
                   <Select
                     className="basic-single"
                     options={encodingList}
-                    placeholder="Encoding"
+                    placeholder="Select Encoding"
 
                     // value={encoding}
                     onChange={e => { setEncoding(e); onOptionChange(); }}
@@ -65,7 +65,7 @@ function SearchComponent(props) {
                   <Select
                     className="basic-single"
                     options={prettyList}
-                    placeholder="Pretty"
+                    placeholder="Select Pretty"
                     // value={pretty}
                     onChange={e => { setPretty(e); onOptionChange(); }}
                   />
@@ -75,7 +75,7 @@ function SearchComponent(props) {
                   <Select
                     className="basic-single"
                     options={summaryList}
-                    placeholder="Summary"
+                    placeholder="Select Summary"
                     // value={summary}
                     onChange={e => { setSummary(e); onOptionChange(); }}
                   />

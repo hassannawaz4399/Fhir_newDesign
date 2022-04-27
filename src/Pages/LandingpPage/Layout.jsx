@@ -31,12 +31,19 @@ const Layout = (props) => {
                 </li>
                   </ul> */}
 
-                <div className=" table-header col-10 col-lg-6" >
-                    <h2 className="mt-3">Table Data:</h2>
+                <div className=" table-header col-10 col-lg-8" >
+
+                    <article className="navbar pr-0 pl-0">
+                        <h3 >Table Data:</h3>
+                        <nav class="navbar navbar-light ">
+                            <img src="./image/logo.png"></img>
+                            <i class="fa fa-sign-out" href="/" aria-hidden="true"></i></nav>
+                    </article>
 
                 </div>
-            </div>
+           
             <Outlet />
+            </div>
         </div>
     </>)
 }

@@ -146,15 +146,16 @@ function Home() {
 
                 {/* ################Sort btn################ */}
                 <article className="sortheading my-3">
-                    <label>Search Parameters </label>
+                <button className='btn' onClick={() => { setSearchArray([...searchArray, { sortData: sortData }]) }}>
+                            <i className='fa fa-plus-circle'>  <label>Add Param </label></i>
+                        </button>
+                    {/* <label>Search Parameters </label> */}
                     {/* <p className="sortresult">Sort Results</p> */}
 
 
 
                     <article className='sortcontiner'>
-                        <button className='btn' onClick={() => { setSearchArray([...searchArray, { sortData: sortData }]) }}>
-                            <i className='fa fa-plus'></i>
-                        </button>
+                     
 
 
                         {/* <label data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -223,7 +224,7 @@ function Home() {
 
                     />
                     <br />
-                    <div><b>Selected Value: </b> {JSON.stringify(datasort, null, 2)}</div>
+                    {/* <div><b>Selected Value: </b> {JSON.stringify(datasort, null, 2)}</div> */}
                 </article>
                 <div>
                     <button className='btn btn-primary btn-block btncolor mb-5' onClick={onSearchClick}>Search</button>

@@ -11,7 +11,7 @@ import ForgetPassword from "./Pages/ForgetPassword/ForgetPassword";
 function App() {
   return (
     <BrowserRouter basename="/">
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<Login />}></Route>
         <Route path="/resetpassword" element={<ForgetPassword />}></Route>
