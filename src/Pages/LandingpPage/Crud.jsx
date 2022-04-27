@@ -140,14 +140,16 @@ const Crud = () => {
     }
     return (
         <>
+
             <div className="row ">
+                {/* ----Curd------- */}
                 <div className="col-4 datacolunm">
                     {
                         resource && resource.length > 0 ? <SearchComponent hideOption={true} onChange={onResourceChange} resources={resource} defaultResource={{ value: resource[0].type, label: resource[0].type + " (" + resource[0].extension[0].valueDecimal + ")" }}></SearchComponent> : <Select placeholder="loading..." isDisabled={true} />
                     }
 
                     <div className="row mt-3">
-                        <div className="col-12">
+                        <div className="col-lg-12 col-12">
                             <strong>Read</strong> an individual resource instance given its ID (and optionally a version ID to retrieve a specific version of that instance to vread that instance)
                             <div className="curd">
                                 <button className="align-items-center btn btn-primary" onClick={onReadClick}>
@@ -171,7 +173,7 @@ const Crud = () => {
                     </div>
 
                     <div className="row mt-3">
-                        <div className="col-12">
+                        <div className="col-lg-12 col-12">
                             Retrieve the update <strong>history</strong> across the Observation resource type, or against a specific instance of this resource type if an ID is specified.
                             <div className="curd">
                                 <button className="align-items-center btn btn-primary" onClick={onHistoryClick}>
@@ -200,7 +202,7 @@ const Crud = () => {
                         </div>
                     </div>
                     <div className="row mt-3">
-                        <div className="col-12">
+                        <div className="col-lg-12 col-12">
                             <strong>Delete</strong> an individual instance of the resource
                             <div className="curd">
                                 <button className="align-items-center btn btn-primary" onClick={onDeleteClick}>

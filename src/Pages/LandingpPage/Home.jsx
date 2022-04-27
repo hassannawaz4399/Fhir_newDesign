@@ -106,9 +106,12 @@ function Home() {
         var allchecked = document.querySelectorAll("[name='search_include']:checked");
 
         var queryParams = searchArray.map(x => x.selection).join("&");
-        queryParams += "&_include=" + [...datasort].map(x => x).join("&_include=");
-
+        queryParams += "&_include=" + [datasort].map(x => x).join("&_include=");
+        console.log(queryParams)
         var result = await getCall(resourceSelected + "?" + (options ?? "") + "&" + (queryParams ?? "") + (sortSelected ? "&_sort=" + sortSelected : ""));
+
+
+
         if (result)
             setResultSet(result.entry);
     }
@@ -119,19 +122,15 @@ function Home() {
     {/* ********************Get DropDown Value*************************** */ }
 
     const datasearch = (e) => {
-
-
-        setdatasort(e[0]?.value)
-        // setdatasort([...datasort, e[0]?.value]);
+        // setdatasort(e[0]?.value)
         // console.log(datasort)
-        // setdatasort(datasort => [...datasort, e[0]?.value]);
-        // setdatasort(prevState => [...prevState, e[0]?.value]);
-        console.log(datasort)
-
-
-
+        // let value = Array.from(e.target.selectedOptions, option => option.value);
+        // console.log(value)
+        setdatasort(Array.isArray(e) ? e.map(x => x.value) : []);
 
     }
+
+
     return (
         // <div className='container'>
 
@@ -166,8 +165,6 @@ function Home() {
                         <Select
                             className="search_include sortbtn"
                             classNamePrefix="select"
-
-
                             name="color"
                             options={CONSTANTS.SORT.map((x, i) => { return { value: x, label: x } })}
                         />
@@ -223,8 +220,10 @@ function Home() {
                         className="basic-multi-select"
                         // onChange={(e) => { props.onChange(e.value) }} 
                         options={inludes.map(x => { return { value: x, label: x } })}
+
                     />
                     <br />
+                    <div><b>Selected Value: </b> {JSON.stringify(datasort, null, 2)}</div>
                 </article>
                 <div>
                     <button className='btn btn-primary btn-block btncolor mb-5' onClick={onSearchClick}>Search</button>
