@@ -152,7 +152,7 @@ const Crud = () => {
                         <div className="col-lg-12 col-12">
                             <strong>Read</strong> an individual resource instance given its ID (and optionally a version ID to retrieve a specific version of that instance to vread that instance)
                             <div className="curd">
-                                <button className="align-items-center btn btn-primary" onClick={onReadClick}>
+                                <button className="align-items-center btn btn-primary">
                                     <i className="fa fa-book mr-2"></i>
                                     Read
                                 </button>
@@ -283,6 +283,36 @@ const Crud = () => {
                     </div>
                     {isModalOpen && <ReadModal data={readResult} onModalClose={e => setIsModalOpen(false)} />}
                     {isHistoryModalOpen && <HistoryModal data={historyResult} onModalClose={e => setIsHistoryModalOpen(false)} />}
+                </div>
+                <div className="col-8">
+                    <article>
+
+
+                        {/* <h5 className="modal-title" id="exampleModalLabel">Modal title</h5> */}
+
+
+                        <div className="modal-body mt-5 overflow-auto">
+                            {
+                                readResult?.text?.div && <div dangerouslySetInnerHTML={{ __html: readResult?.text?.div }}></div>
+                            }{
+                                (!(readResult?.text?.div)) && <div>NO DATA FOUND</div>
+                            }
+
+                        </div>
+                        {/* <div className="modal-footer border-0">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary">Save changes</button>
+                        </div> */}
+
+                        <div className="modal-body mt-5 overflow-auto">
+                            {
+                                historyResult && historyResult.entry && historyResult.entry.map((x, i) => <><div dangerouslySetInnerHTML={{ __html: x?.resource?.text?.div }}></div></>)
+                            }
+
+                        </div>
+
+                    </article>
+
                 </div>
             </div>
         </>

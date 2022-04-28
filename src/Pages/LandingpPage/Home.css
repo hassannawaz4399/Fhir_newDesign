@@ -360,8 +360,15 @@ input[type="date"] {
   display: flex;
     justify-content: space-between;
 }
-.sortbtn{
-  width: 9rem;
+.sortbtn > .css-1s2u09g-control{
+  opacity: 0;
+  width: 10rem;
+ 
+}
+
+.filtericon{
+  position: absolute;
+    right: 10%;
 }
 
 
@@ -400,8 +407,7 @@ input[type="date"] {
   }
 
   
-element.style {
-}
+
 .table-striped>tbody>tr:nth-of-type(odd)>* {
     --bs-table-accent-bg: #fefed4;
     color: var(--bs-table-striped-color);
@@ -416,3 +422,65 @@ element.style {
 } */
 
 
+
+
+
+.image-upload > Select
+{
+    display: none;
+}
+
+.image-upload label
+{
+    width: 80px;
+    cursor: pointer;
+}
+
+.leftcolunm{
+  height: 100vh;
+}
+
+.tableoverflow{
+  height: 100vh;
+  overflow-y: scroll;
+  /* width */
+
+}
+
+table thead tr th {
+  padding: 0px !important;
+}
+
+
+.tableoverflow::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.tableoverflow::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.tableoverflow::-webkit-scrollbar-thumb {
+  background: #6e6e6d;
+}
+
+/* Handle on hover */
+.tableoverflow::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.slider{
+  display: flex;
+  flex-direction: column;
+}
+
+Select::-webkit-scrollbar {
+  width: 10px;
+}
+
+
+Select::-webkit-scrollbar-thumb {
+  background: #d11717;
+}

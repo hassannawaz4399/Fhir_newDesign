@@ -12,6 +12,14 @@ p {
   border-radius: 7px;
 }
 
+.fa-sign-out{
+  font-size: 1.5rem;
+  background: #f39292;
+  border-radius: 50%;
+  padding: 0.3rem;
+  color: black;
+}
+
 a{
   color: #a79790 !important;
 }

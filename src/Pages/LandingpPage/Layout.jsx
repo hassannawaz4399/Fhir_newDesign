@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom"
+import { Link, NavLink, Outlet } from "react-router-dom"
 import "./Home.css"
 
 const Layout = (props) => {
@@ -31,18 +31,20 @@ const Layout = (props) => {
                 </li>
                   </ul> */}
 
-                <div className=" table-header col-10 col-lg-8" >
+                <div className=" table-header col-12 col-lg-8" >
 
                     <article className="navbar pr-0 pl-0">
                         <h3 >Table Data:</h3>
                         <nav class="navbar navbar-light ">
                             <img src="./image/logo.png"></img>
-                            <i class="fa fa-sign-out" href="/" aria-hidden="true"></i></nav>
+                            <Link to="/">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            </Link></nav>
                     </article>
 
                 </div>
-           
-            <Outlet />
+
+                <Outlet />
             </div>
         </div>
     </>)

@@ -79,19 +79,19 @@ function Login(props) {
 
     const onSubmitLoginCredentials = (e) => {
         e.preventDefault();
-        navigate("/home");
-        // axios
-        //     .post(url, login)
-        //     .then((res) => {
-        //         console.log(res)
-        //         navigate("/home");
+        // navigate("/home");
+        axios
+            .post(url, login)
+            .then((res) => {
+                console.log(res)
+                navigate("/home");
 
 
-        //     })
-        //     .catch((error) => {
-        //         alert(error);
-        //         // setError(res.message);
-        //     });
+            })
+            .catch((error) => {
+                alert(error);
+                // setError(res.message);
+            });
     };
 
     return (

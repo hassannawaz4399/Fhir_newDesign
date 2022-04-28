@@ -106,9 +106,13 @@ function Home() {
         var allchecked = document.querySelectorAll("[name='search_include']:checked");
 
         var queryParams = searchArray.map(x => x.selection).join("&");
-        queryParams += "&_include=" + [datasort].map(x => x).join("&_include=");
+        queryParams += "&_include=" + datasort.join("&_include=");
         console.log(queryParams)
         var result = await getCall(resourceSelected + "?" + (options ?? "") + "&" + (queryParams ?? "") + (sortSelected ? "&_sort=" + sortSelected : ""));
+
+        console.log(result)
+
+
 
 
 
@@ -132,49 +136,45 @@ function Home() {
 
 
     return (
-        // <div className='container'>
+        <div className='container-fluid'>
 
-        <div className="row">
+            <div className="row">
 
-            <div className="col-12 col-lg-4 datacolunm">
+                <div className="col-12 col-lg-4 datacolunm leftcolunm">
 
-                {
-                    resource && resource.length > 0 ? <SearchComponent onOptionChange={optionChanged} onChange={observation} resources={resource} defaultResource={{ value: resource[0].type, label: resource[0].type + " (" + resource[0].extension[0].valueDecimal + ")" }}></SearchComponent> : <div>Loading...</div>
-                }
+                    {
+                        resource && resource.length > 0 ? <SearchComponent onOptionChange={optionChanged} onChange={observation} resources={resource} defaultResource={{ value: resource[0].type, label: resource[0].type + " (" + resource[0].extension[0].valueDecimal + ")" }}></SearchComponent> : <div>Loading...</div>
+                    }
 
 
 
-                {/* ################Sort btn################ */}
-                <article className="sortheading my-3">
-                <button className='btn' onClick={() => { setSearchArray([...searchArray, { sortData: sortData }]) }}>
+                    {/* ################Sort btn################ */}
+                    <article className="sortheading my-3">
+                        <button className='btn' onClick={() => { setSearchArray([...searchArray, { sortData: sortData }]) }}>
                             <i className='fa fa-plus-circle'>  <label>Add Param </label></i>
                         </button>
-                    {/* <label>Search Parameters </label> */}
-                    {/* <p className="sortresult">Sort Results</p> */}
+                        {/* <label>Search Parameters </label> */}
+                        {/* <p className="sortresult">Sort Results</p> */}
 
 
 
-                    <article className='sortcontiner'>
-                     
-
-
-                        {/* <label data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
-                                <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z" />
-                            </svg>
-                        </label> */}
-                        <Select
-                            className="search_include sortbtn"
-                            classNamePrefix="select"
-                            name="color"
-                            options={CONSTANTS.SORT.map((x, i) => { return { value: x, label: x } })}
-                        />
+                        <article className='sortcontiner'>
 
 
 
+                            <label className="filtericon">
 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
+                                    <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z" />
+                                </svg>
+                            </label>
 
-
+                            <Select
+                                className="search_include sortbtn"
+                                classNamePrefix="select"
+                                name="color"
+                                options={CONSTANTS.SORT.map((x, i) => { return { value: x, label: x } })}
+                            />
 
 
 
@@ -187,107 +187,106 @@ function Home() {
 
 
 
-
-                        {/* <select value={sortSelected} onChange={e=>setSortSelected(e.target.value)}>
+                            {/* <select value={sortSelected} onChange={e=>setSortSelected(e.target.value)}>
             {
                 CONSTANTS.SORT.map((x,i)=><option value={x} key={i}>{x??"Default Sort"}</option>)
             }
             </select> */}
+                        </article>
+
                     </article>
 
-                </article>
 
 
 
-
-                {
-                    searchArray.map(x => {
-                        return <SearchParams data={x.sortData} onValueChanged={(e) => { x.selection = e; setSearchArray(searchArray) }} />
-                    })
-                    // sortData && sortData.length > 0 ? <SearchParams onValueChanged={Selection} data={sortData} ></SearchParams> : <></>
-                }
-
-                {/* ********************DropDown*************************** */}
-
-                <article className='hintcontent mt-3'>
-                    <Select
-                        classNamePrefix="select"
-                        placeholder={"Select Param"}
-                        // defaultValue={props.defaultResource}
-                        label="test"
-                        isMulti
-                        name="colors"
-                        onChange={datasearch}
-                        className="basic-multi-select"
-                        // onChange={(e) => { props.onChange(e.value) }} 
-                        options={inludes.map(x => { return { value: x, label: x } })}
-
-                    />
-                    <br />
-                    {/* <div><b>Selected Value: </b> {JSON.stringify(datasort, null, 2)}</div> */}
-                </article>
-                <div>
-                    <button className='btn btn-primary btn-block btncolor mb-5' onClick={onSearchClick}>Search</button>
-                </div>
-            </div>
-
-
-
-            <div className="col-12 col-lg-8">
-                <h2 className="mt-3 tablehide">Table Data:</h2>
-                <article>
-                    {resultSet && resultSet.length > 0 &&
-                        <article>
-                            <div>
-                                <table className='table table-striped table-bordered'>
-                                    <thead>
-                                        <tr>
-                                            <th>
-
-                                            </th>
-                                            <th>
-                                                ID
-                                            </th>
-                                            <th>
-                                                Updated
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {
-                                            resultSet.map((c, i) => {
-                                                const id = `${c.resource.resourceType}/${c.resource.id}/_history/1`
-                                                return (
-                                                    <tr>
-                                                        <td className='d-flex flex-row'>
-                                                            <button className='btn readbtn btn-primary btn-sm' onClick={() => onReadClick(id)}>Read</button>
-                                                            <button className='btn btn-primary updatebtn btn-sm ml-2'>Update</button>
-                                                        </td>
-                                                        <td>
-                                                            <a href={c.fullUrl + "/_history/1"}>{`${c.resource.resourceType}/${c.resource.id}/_history/1`}</a>
-                                                        </td>
-                                                        <td>
-                                                            {new Date(c.resource.meta.lastUpdated).toLocaleString()}
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            })
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
-                            {isModalOpen && <ReadModal data={readResult} onModalClose={e => setIsModalOpen(false)} />
-                            }
-
-                        </article>
+                    {
+                        searchArray.map(x => {
+                            return <SearchParams data={x.sortData} onValueChanged={(e) => { x.selection = e; setSearchArray(searchArray) }} />
+                        })
+                        // sortData && sortData.length > 0 ? <SearchParams onValueChanged={Selection} data={sortData} ></SearchParams> : <></>
                     }
-                </article>
 
-                <Outlet />
-            </div>
+                    {/* ********************DropDown*************************** */}
 
-        </div >
-        // </div>
+                    <article className='hintcontent mt-3'>
+                        <Select
+                            classNamePrefix="select"
+                            placeholder={"Select Param"}
+                            // defaultValue={props.defaultResource}
+                            label="test"
+                            isMulti
+                            name="colors"
+                            onChange={datasearch}
+                            className="basic-multi-select"
+                            // onChange={(e) => { props.onChange(e.value) }} 
+                            options={inludes.map(x => { return { value: x, label: x } })}
+
+                        />
+                        <br />
+                        {/* <div><b>Selected Value: </b> {JSON.stringify(datasort, null, 2)}</div> */}
+                    </article>
+                    <div>
+                        <button className='btn btn-primary btn-block btncolor mb-5' onClick={onSearchClick}>Search</button>
+                    </div>
+                </div>
+
+
+
+                <div className="col-12 col-lg-8">
+                    <h2 className="mt-3 tablehide">Table Data:</h2>
+                    <article>
+                        {resultSet && resultSet.length > 0 &&
+                            <article>
+                                <div className="tableoverflow">
+                                    <table className='table table-striped table-bordered'>
+                                        <thead>
+                                            <tr>
+                                                <th>
+
+                                                </th>
+                                                <th>
+                                                    ID
+                                                </th>
+                                                <th>
+                                                    Updated
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {
+                                                resultSet.map((c, i) => {
+                                                    const id = `${c.resource.resourceType}/${c.resource.id}/_history/1`
+                                                    return (
+                                                        <tr>
+                                                            <td className='d-flex flex-row'>
+                                                                <button className='btn readbtn btn-primary btn-sm' onClick={() => onReadClick(id)}>Read</button>
+                                                                <button className='btn btn-primary updatebtn btn-sm ml-2'>Update</button>
+                                                            </td>
+                                                            <td>
+                                                                <a href={c.fullUrl + "/_history/1"}>{`${c.resource.resourceType}/${c.resource.id}/_history/1`}</a>
+                                                            </td>
+                                                            <td>
+                                                                {new Date(c.resource.meta.lastUpdated).toLocaleString()}
+                                                            </td>
+                                                        </tr>
+                                                    )
+                                                })
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {isModalOpen && <ReadModal data={readResult} onModalClose={e => setIsModalOpen(false)} />
+                                }
+
+                            </article>
+                        }
+                    </article>
+
+                    <Outlet />
+                </div>
+
+            </div >
+        </div>
 
     )
 }
